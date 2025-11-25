@@ -1,0 +1,37 @@
+services:
+  db:
+    image: postgres
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: ${PRIVATE_POSTGRES_USER}
+      POSTGRES_PASSWORD: ${PRIVATE_POSTGRES_PASSWORD}
+      POSTGRES_DB: ${PRIVATE_POSTGRES_DB}
+    volumes:
+      - pgdata:/var/lib/postgresql
+  minio:
+    image: quay.io/minio/minio:RELEASE.2025-04-22T22-12-26Z
+    restart: always
+    command: server /data --console-address ":9001"
+    env_file:
+      - .env
+    ports:
+      - 9000:9000
+      - 9001:9001
+    environment:
+      MINIO_ROOT_USER: ${PRIVATE_MINIO_ROOT_USER}
+      MINIO_ROOT_PASSWORD: ${PRIVATE_MINIO_ROOT_PASSWORD}
+      MINIO_BUCKET: ${PRIVATE_MINIO_BUCKET}
+      MINIO_REGION: ${PRIVATE_MINIO_REGION}
+      MINIO_ACCESS_KEY: ${PRIVATE_MINIO_ACCESS_KEY}
+      MINIO_SECRET_KEY: ${PRIVATE_MINIO_SECRET_KEY}
+      MINIO_ENDPOINT: ${PRIVATE_MINIO_ENDPOINT}
+      MINIO_CONSOLE_ENDPOINT: ${PRIVATE_MINIO_CONSOLE_ENDPOINT}
+    volumes:
+      - minio_data:/data
+volumes:
+  pgdata:
+  minio_data:
