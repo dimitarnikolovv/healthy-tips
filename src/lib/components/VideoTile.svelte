@@ -21,10 +21,8 @@
 </script>
 
 <article class="space-y-4 rounded-3xl border border-[#0f172a]/10 bg-[#f5f5f0] p-4 shadow-sm">
-	<div class="relative overflow-hidden rounded-[22px] border border-[#0f172a]/15 bg-[#0f172a]/10">
-		<div
-			class="aspect-video overflow-hidden rounded-3xl [&_video]:aspect-video! [&_video]:object-cover!"
-		>
+	<div class="relative overflow-hidden rounded-3xl border border-[#0f172a]/15 bg-[#0f172a]/10">
+		<div class="aspect-video overflow-hidden [&_video]:aspect-video! [&_video]:object-cover!">
 			<video src="/api/videos/stream/{video.id}" playsinline controls>
 				<track kind="captions" srclang="bg" label="Български" />
 			</video>
@@ -47,8 +45,7 @@
 		<a href={`/videos/${video.id}`} class="text-xl font-semibold text-[#0f172a]">{video.title}</a>
 
 		<p class="line-clamp-3 text-sm text-[#0f172a]/70">
-			{video.description ??
-				'Няма добавено описание към това видео, но можете да го изгледате веднага.'}
+			{video.description ?? 'Няма описание за това видео.'}
 		</p>
 	</div>
 </article>

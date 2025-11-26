@@ -5,7 +5,7 @@ import { DEFAULT_SEO_DESCRIPTION, DEFAULT_SEO_TITLE } from '$lib/utils/constants
 import { VideoStatusEnum } from '$lib/types/enums';
 import { and, eq, ilike, or } from 'drizzle-orm';
 
-export const load: PageServerLoad = async ({ url, locals }) => {
+export const load: PageServerLoad = async ({ url }) => {
 	const searchTerm = url.searchParams.get('q')?.trim() ?? '';
 
 	const where = searchTerm
@@ -24,13 +24,6 @@ export const load: PageServerLoad = async ({ url, locals }) => {
 		title: DEFAULT_SEO_TITLE,
 		description: DEFAULT_SEO_DESCRIPTION,
 		searchTerm,
-		user: locals.user
-			? {
-					firstName: locals.user.firstName,
-					lastName: locals.user.lastName,
-					role: locals.user.role
-				}
-			: null,
 		videos: publishedVideos
 	};
 };

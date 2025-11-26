@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { PageData } from './$types';
-	import VideoTile from '$lib/components/player/VideoTile.svelte';
+	import VideoTile from '@/components/VideoTile.svelte';
 
 	let { data }: { data: PageData } = $props();
 
@@ -84,9 +84,9 @@
 </svelte:head>
 
 <div class="min-h-screen bg-[#f5f5f0] text-[#0f172a]">
-	<div class="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-10 lg:flex-row">
+	<div class="mx-auto flex flex-col gap-8 px-4 py-10 lg:flex-row">
 		<aside
-			class="w-full rounded-3xl border border-[#0f172a]/10 bg-[#f5f5f0] p-6 lg:max-w-xs lg:sticky lg:top-8 lg:self-start"
+			class="w-full rounded-3xl border border-[#0f172a]/10 bg-[#f5f5f0] p-6 lg:max-w-sm lg:sticky lg:top-8 lg:self-start"
 		>
 			<div class="space-y-1">
 				<p class="text-xs uppercase tracking-[0.3em] text-[#0f172a]/60">Healthy Tips</p>
@@ -137,9 +137,7 @@
 						</div>
 						<div class="flex-1">
 							<p class="font-semibold">{data.user.firstName} {data.user.lastName}</p>
-							<p class="text-xs uppercase tracking-[0.2em] text-[#0f172a]/60">
-								{data.user.role === 'admin' ? 'Администратор' : 'Потребител'}
-							</p>
+							<p class="text-xs text-[#0f172a]/70">{data.user.email}</p>
 						</div>
 						<a href="/logout" class="text-sm font-semibold text-[#2fbf71]">Изход</a>
 					</div>
@@ -274,7 +272,7 @@
 						<p class="mt-2 text-sm">Променете търсенето или филтъра и опитайте отново.</p>
 					</div>
 				{:else}
-					<div class="grid gap-6 md:grid-cols-2">
+					<div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
 						{#each filteredVideos as video (video.id)}
 							<VideoTile {video} />
 						{/each}
