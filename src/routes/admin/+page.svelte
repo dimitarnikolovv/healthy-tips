@@ -1,5 +1,4 @@
 <script lang="ts">
-	import type { ActionData, PageData } from './$types';
 	import { superForm } from 'sveltekit-superforms';
 	import { zod4Client } from 'sveltekit-superforms/adapters';
 	import { ACCEPTED_VIDEO_MIME_TYPES, adminVideoUploadSchema } from './schema';
@@ -13,7 +12,7 @@
 	import { Trash2, Upload } from '@lucide/svelte';
 	import { displayVideoStatus, VideoStatusEnum } from '@/types/enums';
 
-	let { data, form }: { data: PageData; form: ActionData } = $props();
+	let { data, form } = $props();
 
 	const uploadForm = superForm(data.uploadForm, {
 		validators: zod4Client(adminVideoUploadSchema),
@@ -95,7 +94,7 @@
 							<Form.Label>Описание</Form.Label>
 							<textarea
 								{...props}
-								class="border-input bg-background ring-offset-background placeholder:text-muted-foreground focus-visible:ring-ring/50 focus-visible:border-ring focus-visible:ring-[3px] shadow-xs flex min-h-[160px] w-full rounded-md border px-3 py-2 text-base outline-none transition-[color,box-shadow] md:text-sm"
+								class="border-input bg-background ring-offset-background placeholder:text-muted-foreground focus-visible:ring-ring/50 focus-visible:border-ring focus-visible:ring-[3px] shadow-xs flex min-h-40 w-full rounded-md border px-3 py-2 text-base outline-none transition-[color,box-shadow] md:text-sm"
 								placeholder="Добавете кратко описание за видеото..."
 								disabled={$delayed}
 								bind:value={$formData.description}

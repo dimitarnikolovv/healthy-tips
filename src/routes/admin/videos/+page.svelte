@@ -1,6 +1,5 @@
 <script lang="ts">
 	import * as Pagination from '$lib/components/ui/pagination';
-	import type { ActionData, PageData } from './$types';
 	import { bytesToHumanReadable } from '$lib/utils/videos';
 	import { toast } from 'svelte-sonner';
 	import ChevronRight from '@lucide/svelte/icons/chevron-right';
@@ -8,7 +7,7 @@
 	import { goto } from '$app/navigation';
 	import { page } from '$app/state';
 
-	let { data, form }: { data: PageData; form: ActionData } = $props();
+	let { data, form } = $props();
 
 	const formatter = new Intl.DateTimeFormat('bg-BG', {
 		dateStyle: 'medium',
@@ -95,8 +94,8 @@
 									<span
 										class={`inline-flex items-center rounded-full px-3 py-1 text-xs font-medium ${
 											video.status === 'published'
-												? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-500/20 dark:text-emerald-200'
-												: 'bg-amber-100 text-amber-800 dark:bg-amber-500/20 dark:text-amber-200'
+												? 'bg-emerald-100 text-emerald-800 '
+												: 'bg-amber-100 text-amber-800 '
 										}`}
 									>
 										{video.status === 'published' ? 'Публикувано' : 'Чернова'}

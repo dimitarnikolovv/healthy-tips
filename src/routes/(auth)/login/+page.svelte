@@ -5,11 +5,11 @@
 	import { superForm } from 'sveltekit-superforms';
 	import { zod4Client } from 'sveltekit-superforms/adapters';
 	import TogglePassword from '$lib/components/TogglePassword.svelte';
-	import type { ActionData, PageData } from './$types';
 	import * as Card from '$lib/components/ui/card/index.js';
 	import { toast } from 'svelte-sonner';
+	import { ArrowLeft } from '@lucide/svelte';
 
-	let { data, form }: { data: PageData; form: ActionData } = $props();
+	let { data, form } = $props();
 
 	const loginForm = superForm(data.loginForm, {
 		validators: zod4Client(loginSchema),
@@ -35,6 +35,9 @@
 					<Card.Header>
 						<Card.Title class="text-2xl">
 							<h1 class="text-2xl font-semibold tracking-tight">Вход в платформата</h1>
+							<a href="/" class="text-sm flex items-center gap-2 mt-2 hover:underline">
+								<ArrowLeft class="size-4" /> Към началната страница</a
+							>
 						</Card.Title>
 					</Card.Header>
 					<Card.Content class="grid gap-4">

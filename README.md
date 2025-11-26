@@ -31,3 +31,28 @@ Healthy Tips is a two-sided video platform focused on healthy food topics. It co
 - Email/password auth.
 - Role enforcement in both frontend routes and backend endpoints.
 - Guards around admin tools plus per-request role checks in the API layer.
+
+---
+
+## Developing
+
+Once you've created a project and installed dependencies with `pnpm install`, start the postres and minio services with `pnpm services:start`.
+
+Then you can start the dev server:
+
+```bash
+npm run dev
+
+# or start the server and open the app in a new browser tab
+npm run dev -- --open
+```
+
+## Building
+
+To create a production version of your app:
+
+```bash
+npm run build
+```
+
+You can preview the production build with `npm run preview`.

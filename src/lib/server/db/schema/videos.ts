@@ -4,6 +4,7 @@ import { videoStatusEnum } from './enums';
 import { relations } from 'drizzle-orm/relations';
 import { users } from './auth';
 import { VideoStatusEnum } from '../../../types/enums';
+import { comments } from './comments';
 
 export const videos = pgTable(
 	'videos',
@@ -35,12 +36,13 @@ export const videos = pgTable(
 	]
 );
 
-export const videoRelations = relations(videos, ({ one }) => ({
+export const videoRelations = relations(videos, ({ one, many }) => ({
 	uploader: one(users, {
 		fields: [videos.uploadedByUserId],
 		references: [users.id]
-	})
+	}),
+
+	comments: many(comments)
 }));
 
 export type Video = typeof videos.$inferSelect;
-export type NewVideo = typeof videos.$inferInsert;

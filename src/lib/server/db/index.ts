@@ -4,6 +4,7 @@ import postgres from 'postgres';
 import * as auth from './schema/auth';
 import * as enums from './schema/enums';
 import * as videos from './schema/videos';
+import * as comments from './schema/comments';
 
 import { PRIVATE_DATABASE_URL } from '$env/static/private';
 
@@ -17,7 +18,8 @@ const schema = {
 
 	// Tables
 	...auth,
-	...videos
+	...videos,
+	...comments
 };
 
 export const db = drizzle(client, { schema });

@@ -1,5 +1,4 @@
 <script lang="ts">
-	import type { ActionData, PageData } from './$types';
 	import { superForm } from 'sveltekit-superforms';
 	import { zod4Client } from 'sveltekit-superforms/adapters';
 	import { adminVideoUpdateSchema } from './schema';
@@ -11,7 +10,7 @@
 	import { bytesToHumanReadable } from '$lib/utils/videos';
 	import { toast } from 'svelte-sonner';
 
-	let { data, form }: { data: PageData; form: ActionData } = $props();
+	let { data, form } = $props();
 
 	const editForm = superForm(data.editForm, {
 		validators: zod4Client(adminVideoUpdateSchema),

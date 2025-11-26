@@ -41,11 +41,11 @@ export async function uploadVideoAsset({
 				Bucket: VIDEO_BUCKET,
 				Key: objectKey,
 				Body: fileBuffer,
-				ContentType: mimeType,
-				Metadata: {
-					title: title,
-					slug: uniqueSlug
-				}
+				ContentType: mimeType
+				// Metadata: {
+				// 	title: title,
+				// 	slug: uniqueSlug
+				// }
 			})
 		);
 
