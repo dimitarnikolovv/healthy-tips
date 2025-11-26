@@ -38,13 +38,19 @@ Healthy Tips is a two-sided video platform focused on healthy food topics. It co
 
 Once you've created a project and installed dependencies with `pnpm install`, start the postres and minio services with `pnpm services:start`.
 
+To push the defined schema to the localy running Postgres run
+
+```bash
+pnpm db:push
+```
+
 Then you can start the dev server:
 
 ```bash
-npm run dev
+pnpm dev
 
 # or start the server and open the app in a new browser tab
-npm run dev -- --open
+pnpm dev -- --open
 ```
 
 ## Building
